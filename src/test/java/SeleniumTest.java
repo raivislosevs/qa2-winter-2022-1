@@ -9,6 +9,8 @@ import java.time.Duration;
 
 public class SeleniumTest {
     private final By ACCEPT_COOKIES_BTN = By.id("onetrust-accept-btn-handler");
+    private final By LATVIA = By.xpath(".//a[contains(@href, 'latvia')]");
+    private final By TITLE = By.xpath(".//h1[contains(@class, 'home-h1')]");
 
     @Test
     public void openHomePageTest() {
@@ -21,6 +23,14 @@ public class SeleniumTest {
 
         wait.until(ExpectedConditions.elementToBeClickable(ACCEPT_COOKIES_BTN));
         browser.findElement(ACCEPT_COOKIES_BTN).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(LATVIA));
+        browser.findElement(LATVIA).click();
+
+        browser.findElement(TITLE);
+        System.out.println(browser.findElement(TITLE).getText());
+
+        browser.quit();
 
     }
 }
